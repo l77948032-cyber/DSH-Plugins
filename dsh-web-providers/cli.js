@@ -4,6 +4,7 @@ import { randomBytes } from "node:crypto";
 import { chmodSync, copyFileSync, existsSync, mkdtempSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { homedir, tmpdir } from "node:os";
 import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
 import { delimiter, dirname, join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { parseDocument } from "yaml";
@@ -22,10 +23,9 @@ import { WORKBUDDY_CN, WORKBUDDY_GLOBAL, WORKBUDDY_REGIONS, workBuddyRegion } fr
 
 const PACKAGE = "@l77948032-cyber/dsh-web-providers";
 const LEGACY_PACKAGES = ["@l77948032-cyber/dsh-workbuddy", "@axiaohungry/dsh-llm-workbuddy", "dsh-llm-workbuddy", "dsh-llm-codebuddy"];
-const PACKAGE_VERSION = JSON.parse(readFileSync(new URL("./package.json", import.meta.url), "utf8")).version;
 const PACKAGE_SPEC = process.env.DSH_WEB_PROVIDERS_PACKAGE_SPEC
   || process.env.DSH_WORKBUDDY_PACKAGE_SPEC
-  || `github:l77948032-cyber/DSH-Web-Providers#v${PACKAGE_VERSION}`;
+  || fileURLToPath(new URL(".", import.meta.url));
 const SETTINGS_NS = "llm-workbuddy";
 const PROVIDER_PATH = [SETTINGS_NS, "providers", WORKBUDDY_CN.provider];
 const LEGACY_PROVIDER_PATH = [SETTINGS_NS, "providers", WORKBUDDY_CN.aliases[0]];

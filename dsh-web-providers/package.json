@@ -27,11 +27,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/l77948032-cyber/DSH-Web-Providers.git"
+    "url": "git+https://github.com/l77948032-cyber/DSH-Plugins.git",
+    "directory": "dsh-web-providers"
   },
-  "homepage": "https://github.com/l77948032-cyber/DSH-Web-Providers#readme",
+  "homepage": "https://github.com/l77948032-cyber/DSH-Plugins/tree/main/dsh-web-providers#readme",
   "bugs": {
-    "url": "https://github.com/l77948032-cyber/DSH-Web-Providers/issues"
+    "url": "https://github.com/l77948032-cyber/DSH-Plugins/issues"
   },
   "files": [
     "index.js",

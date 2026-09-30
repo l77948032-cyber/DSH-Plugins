@@ -18,9 +18,18 @@ jobs:
         with:
           node-version: 22.19.0
           cache: npm
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
-      - name: Run checks
-        run: npm run check
-      - name: Verify package contents
-        run: npm pack --dry-run
+          cache-dependency-path: |
+            dsh-web-providers/package-lock.json
+            dsh-notes/package-lock.json
+      - name: Check Web Providers
+        working-directory: dsh-web-providers
+        run: |
+          npm ci --ignore-scripts
+          npm run check
+          npm pack --dry-run
+      - name: Check Notes
+        working-directory: dsh-notes
+        run: |
+          npm ci --ignore-scripts
+          npm run check
+          npm pack --dry-run
